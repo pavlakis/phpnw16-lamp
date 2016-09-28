@@ -1,0 +1,20 @@
+---
+- hosts: 127.0.0.1
+  connection: localhost
+  sudo: true
+  vars:
+    web_server: apachephp
+    servername: phpnw16.local www.phpnw16.local 192.168.22.123
+    timezone: UTC
+  vars_files:
+    - vars/mysql.yml
+    - vars/common.yml
+    - [ "vars/apachephp.yml"]
+  roles:
+    - init
+    - php7-cli
+    - apache
+    - php7
+#    - composer
+    - mysql
+    - phpcommon

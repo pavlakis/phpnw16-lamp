@@ -1,0 +1,8 @@
+- name: Install php7-cli
+  sudo: yes
+  apt: pkg=php-cli state=latest
+
+- name: ensure timezone is set in cli php.ini
+  lineinfile: dest=/etc/php/7.0/cli/php.ini
+              regexp='date.timezone ='
+              line='date.timezone = {{ timezone }}'
